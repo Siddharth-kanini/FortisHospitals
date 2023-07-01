@@ -1,50 +1,47 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Doctors.Models.Helpers;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using ModelLibrary.Models;
-using System;
+using Patients.Context;
+using Patients.DTO;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
-using Doctors.Models.Helpers;
-using Doctorapp.Models;
-using Doctorapp.DTO;
 
-namespace Token.Controllers
+namespace Patients.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthorizeController : ControllerBase
+    public class LoginController : ControllerBase
     {
-        private const string DoctorRole = "Doctor";
+        private const string PatientRole = "Patient";
 
         private readonly IConfiguration _configuration;
-        private readonly HospitalContext _context;
+        private readonly PatientContext _context;
 
-        public AuthorizeController(IConfiguration configuration, HospitalContext context)
+        public LoginController(IConfiguration configuration, PatientContext context)
         {
             _configuration = configuration;
             _context = context;
         }
 
-        [HttpPost("Doctor")]
-        public async Task<IActionResult> PostDoctor(DoctorLoginDTO loginDTO)
+        [HttpPost("Patient")]
+        public async Task<IActionResult> PostDoctor(Patient_login_DTO loginDTO)
         {
             if (loginDTO != null && !string.IsNullOrEmpty(loginDTO.Username) && !string.IsNullOrEmpty(loginDTO.Password))
             {
-                var doctor = await GetDoctor(loginDTO.Username);
-                if (doctor != null && PasswordHasher.VerifyPassword(loginDTO.Password, doctor.HashedPassword))
+                var doctor = await GetPatient(loginDTO.Username);
+                if (doctor != null && PasswordHasher.VerifyPassword(loginDTO.Password, doctor.Patient_HashedPassword))
                 {
                     var claims = new[]
                     {
                         new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                         new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-                        new Claim("Doctor_ID", doctor.DoctorID.ToString()),
-                        new Claim("Username", doctor.Username),
-                        new Claim(ClaimTypes.Role, DoctorRole)
+                        new Claim("Patient_ID", doctor.Patient_ID.ToString()),
+                        new Claim("Username", doctor.Patient_UserName),
+                        new Claim(ClaimTypes.Role, PatientRole)
                     };
 
                     var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
@@ -69,9 +66,9 @@ namespace Token.Controllers
             }
         }
 
-        private async Task<Doctor> GetDoctor(string username)
+        private async Task<Patient> GetPatient(string username)
         {
-            return await _context.Doctors.FirstOrDefaultAsync(d => d.Username == username);
+            return await _context.Patients.FirstOrDefaultAsync(d => d.Patient_UserName == username);
         }
     }
 }

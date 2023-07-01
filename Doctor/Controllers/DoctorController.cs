@@ -1,7 +1,6 @@
-﻿
+﻿using Doctorapp.DTO;
 using Doctorapp.Repositories;
 using Doctorapp.Services;
-using Doctors.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
 using ModelLibrary.Models;
 using System.Collections.Generic;
@@ -41,17 +40,32 @@ namespace Doctorapp.Controllers
             return Ok(doctor);
         }
 
+        /* [HttpPost]
+         public async Task<IActionResult> AddDoctor([FromForm] Doctor doctor)
+         {
+             if (!ModelState.IsValid)
+             {
+                 return BadRequest(ModelState);
+             }
+             string password = Request.Form["password"];
+
+             int doctorId = await _doctorRepository.AddDoctorAsync(doctor, password);
+             return CreatedAtAction(nameof(GetDoctor), new { id = doctorId }, doctor);
+         }*/
+
         [HttpPost]
-        public async Task<IActionResult> AddDoctor([FromForm] Doctor doctor, string password)
+        public async Task<IActionResult> AddDoctor([FromForm] DoctorWithPassword doctorWithPassword)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            int doctorId = await _doctorRepository.AddDoctorAsync(doctor, password);
-            return CreatedAtAction(nameof(GetDoctor), new { id = doctorId }, doctor);
+            int doctorId = await _doctorRepository.AddDoctorAsync(doctorWithPassword.Doctor, doctorWithPassword.Password);
+            return CreatedAtAction(nameof(GetDoctor), new { id = doctorId }, doctorWithPassword.Doctor);
         }
+
+
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateDoctor(int id, Doctor doctor)
@@ -71,6 +85,8 @@ namespace Doctorapp.Controllers
             await _doctorRepository.DeleteDoctorAsync(id);
             return NoContent();
         }
+
+
 
         [HttpGet("doctors-with-patients")]
         public async Task<IActionResult> GetAllDoctorsWithPatients()

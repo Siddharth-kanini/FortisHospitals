@@ -1,7 +1,7 @@
+using Doctorapp.Models;
 using Doctorapp.Repositories;
 using Doctorapp.Services;
 using Microsoft.EntityFrameworkCore;
-using ModelLibrary.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

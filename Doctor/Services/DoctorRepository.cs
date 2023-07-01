@@ -1,4 +1,6 @@
-﻿using Doctors.Models.Helpers;
+﻿using Doctorapp.Models;
+using Doctorapp.Repositories;
+using Doctors.Models.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ModelLibrary.Models;
@@ -7,7 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace Doctorapp.Repositories
+namespace Doctorapp.Services
 {
     internal class DoctorRepository : IDoctorRepository
     {
@@ -50,7 +52,7 @@ namespace Doctorapp.Repositories
             return doctor.DoctorID;
         }
 
-     
+
 
         public async Task UpdateDoctorAsync(Doctor doctor)
         {
@@ -67,6 +69,7 @@ namespace Doctorapp.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+
 
         public bool VerifyPassword(string password, string hashedPassword)
         {

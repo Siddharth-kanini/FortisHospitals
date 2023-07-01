@@ -1,5 +1,5 @@
-﻿using Doctorapp.Repositories;
-using Doctors.Models.DTO;
+﻿using Doctorapp.DTO;
+using Doctorapp.Repositories;
 
 namespace Doctorapp.Services
 {

@@ -31,9 +31,9 @@ namespace ModelLibrary.Models
         [Required]
         public string? DoctorAddress { get; set; }
         [Required]
-        public int DoctorMobile { get; set; }
+        public string? DoctorMobile { get; set; }
         [Required]
-        public int EmergencyNo { get; set; }
+        public string? EmergencyNo { get; set; }
         [Required]
         public string? Doctor_Experience { get; set; }
         [Required]
@@ -45,7 +45,6 @@ namespace ModelLibrary.Models
         public string? HashedPassword { get; set; }
 
         [Required]
-        [RegularExpression("^(success)$")]
         public string Status { get; set; } = "pending";
         public string? Review { get; set; }
         public DateTime LastLogin { get; set; }
