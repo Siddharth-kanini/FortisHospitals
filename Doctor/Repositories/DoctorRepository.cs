@@ -50,32 +50,7 @@ namespace Doctorapp.Repositories
             return doctor.DoctorID;
         }
 
-       /* [HttpPost]
-        [Route("UploadFile")]
-        public Image UploadFile([FromForm] Image img, int hotelId)
-        {
-            Image image = new Image();
-            try
-            {
-                string path = Path.Combine(@"C:\Users\jeswa\OneDrive\Desktop\Kanini\React\api\public\images", img.ImageName);
-                using (Stream stream = new FileStream(path, FileMode.Create))
-                {
-                    img.file.CopyTo(stream);
-                }
-                image.HotelId = hotelId;
-                image.ImageName = img.ImageName;
-
-                _context.Images.Add(image);
-                _context.SaveChanges();
-
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-
-            return image;
-        }*/
+     
 
         public async Task UpdateDoctorAsync(Doctor doctor)
         {

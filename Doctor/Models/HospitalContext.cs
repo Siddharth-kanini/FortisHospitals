@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ModelLibrary.Models
 {
-    internal class HospitalContext : DbContext
+    public class HospitalContext : DbContext
     {
        
 
