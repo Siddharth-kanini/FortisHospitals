@@ -12,5 +12,6 @@ namespace DoctorApplication.Interface
         Task UpdateDoctorAsync(Doctor doctor);
         Task DeleteDoctorAsync(int doctorId);
         bool VerifyPassword(string password, string hashedPassword);
+
     }
 }

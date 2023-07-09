@@ -53,7 +53,14 @@ namespace PatientApplication.Controllers
                         expires: DateTime.UtcNow.AddMinutes(10),
                         signingCredentials: signIn);
 
-                    return Ok(new JwtSecurityTokenHandler().WriteToken(token));
+
+                    var response = new
+                    {
+                        token = new JwtSecurityTokenHandler().WriteToken(token),
+                        patient_ID = doctor.Patient_ID,
+                    };
+
+                    return Ok(response);
                 }
                 else
                 {

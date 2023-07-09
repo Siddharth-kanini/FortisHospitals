@@ -33,7 +33,7 @@ namespace DoctorApplication.Services
 
         public async Task<int> AddDoctorAsync([FromForm] Doctor doctor, string password)
         {
-            string path = Path.Combine(@"C:\Users\pc\Desktop\img", doctor.ImageName);
+            string path = Path.Combine(@"C:\Users\pc\React\fortishospitals\public\Img", doctor.ImageName);
             using (Stream stream = new FileStream(path, FileMode.Create))
             {
                 doctor.File.CopyTo(stream);

@@ -12,7 +12,7 @@ namespace ModelLibrary.Models
         [Required]
         public int Age { get; set; }
         [Required]
-        [RegularExpression("^(male|female|others)$")]
+       
         public string? Gender { get; set; }
         [Required]
         public string? BloodGroup { get; set; }

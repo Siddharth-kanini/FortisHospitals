@@ -2,10 +2,10 @@
 
 namespace AppointmentApplication.DTO
 {
-    public class UpdateAppointmentDTO
+    public class UpdateAppointmentDTO 
     {
         [Required]
-        public int Appointment_ID { get; set; }
+        public int Appoinment_ID { get; set; }
 
         [Required]
         public string Patient_Status { get; set; } = "consulting";

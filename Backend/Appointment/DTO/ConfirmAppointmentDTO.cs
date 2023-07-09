@@ -2,7 +2,6 @@
 
 namespace AppointmentApplication.DTO
 {
-
     public class ConfirmAppointmentDTO
     {
         [Required]
@@ -11,5 +10,4 @@ namespace AppointmentApplication.DTO
         [Required]
         public string Status { get; set; } = "waiting";
     }
-
 }

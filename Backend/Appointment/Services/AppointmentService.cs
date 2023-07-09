@@ -28,7 +28,7 @@ namespace AppointmentApplication.Services
 
         public async Task UpdateAppointment(UpdateAppointmentDTO updateAppointmentDTO)
         {
-            var appointment = await _appointmentRepository.GetAppointment(updateAppointmentDTO.Appointment_ID);
+            var appointment = await _appointmentRepository.GetAppointment(updateAppointmentDTO.Appoinment_ID);
 
             if (appointment == null)
             {
@@ -70,5 +70,11 @@ namespace AppointmentApplication.Services
         {
             await _appointmentRepository.DeleteAppointment(appointmentId);
         }
+        public async Task<List<Appoinment>> GetAppointmentsByUsername(string username)
+        {
+            return await _appointmentRepository.GetAppointmentsByUsername(username);
+        }
+
+
     }
 }

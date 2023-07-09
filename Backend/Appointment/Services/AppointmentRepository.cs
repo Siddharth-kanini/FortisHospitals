@@ -35,7 +35,7 @@ namespace AppointmentApplication.Services
 
         public async Task<List<Appoinment>> GetAllAppointments()
         {
-            return await _context.Appoinments.ToListAsync();
+            return await _context.Appoinments.Include(x=> x.Patient).Include(x=>x.Doctor).ToListAsync();
         }
 
         public async Task DeleteAppointment(int appointmentId)
@@ -48,5 +48,16 @@ namespace AppointmentApplication.Services
                 await _context.SaveChangesAsync();
             }
         }
+
+        public async Task<List<Appoinment>> GetAppointmentsByUsername(string username)
+        {
+            return await _context.Appoinments
+                .Include(x => x.Patient)
+                .Include(x => x.Doctor)
+                .Where(x => x.Doctor.Username == username)
+                .ToListAsync();
+        }
+
+
     }
 }

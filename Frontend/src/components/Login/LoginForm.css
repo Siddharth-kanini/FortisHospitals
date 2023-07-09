@@ -1,0 +1,28 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .role-toggle {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  .MuiToggleButton-root {
+    color: #333;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+  }
+  
+  .MuiToggleButton-root.Mui-selected {
+    color: #fff;
+    background-color: #2196F3;
+  }
+  
+  .error {
+    color: red;
+    margin-bottom: 10px;
+  }
+  

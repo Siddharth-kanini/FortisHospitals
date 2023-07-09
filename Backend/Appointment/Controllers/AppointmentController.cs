@@ -6,6 +6,7 @@ namespace AppointmentApplication.Controllers
 {
     [ApiController]
     [Route("api/appointments")]
+    
     public class AppointmentController : ControllerBase
     {
         private readonly IAppointmentService _appointmentService;
@@ -62,5 +63,12 @@ namespace AppointmentApplication.Controllers
             await _appointmentService.DeleteAppointment(id);
             return NoContent();
         }
+        [HttpGet("doctor/{username}")]
+        public async Task<IActionResult> GetAppointmentsByUsername(string username)
+        {
+            var appointments = await _appointmentService.GetAppointmentsByUsername(username);
+            return Ok(appointments);
+        }
+
     }
 }

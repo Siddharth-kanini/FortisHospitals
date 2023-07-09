@@ -10,8 +10,12 @@ namespace AppointmentApplication.Interface
         Task<int> CreateInitialAppointment(InitialAppointmentDTO initialAppointmentDTO);
         Task UpdateAppointment(UpdateAppointmentDTO updateAppointmentDTO);
         Task ConfirmAppointment(ConfirmAppointmentDTO confirmAppointmentDTO);
-        Task<Appoinment> GetAppointment(int appointmentId);
+        Task<Appoinment> GetAppointment(int appoinmentId);
         Task<List<Appoinment>> GetAllAppointments();
-        Task DeleteAppointment(int appointmentId);
+        Task DeleteAppointment(int appoinmentId);
+        Task<List<Appoinment>> GetAppointmentsByUsername(string username);
+
+
+
     }
 }

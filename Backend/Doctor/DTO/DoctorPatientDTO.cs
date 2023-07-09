@@ -2,6 +2,7 @@
 {
     public class DoctorPatientDTO
     {
+        public int DoctorID { get; set; }
         public string? ImageName { get; set; }
         public string? DoctorName { get; set; }
         public string? DoctorMobile { get; set; }

@@ -80,5 +80,18 @@ namespace DoctorApplication.Controllers
             IEnumerable<DoctorPatientDTO> doctorPatientDTOs = await _doctorService.GetAllDoctorsWithPatientsAsync();
             return Ok(doctorPatientDTOs);
         }
+        [HttpPost("{id}/activation")]
+        public async Task<IActionResult> ActivateDoctor(int id, [FromBody] DoctorActive_DTO doctorActivationDTO)
+        {
+            try
+            {
+                DoctorActive_DTO activatedDoctor = await _doctorService.Activation(id, doctorActivationDTO);
+                return Ok(activatedDoctor);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred during doctor activation: {ex.Message}");
+            }
+        }
     }
 }

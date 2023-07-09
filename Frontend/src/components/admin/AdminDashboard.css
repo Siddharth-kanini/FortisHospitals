@@ -1,0 +1,171 @@
+.container {
+  margin-top: 20px;
+}
+
+h4 {
+  text-align: center;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.section {
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.section:hover {
+  background-color: #f5f5f5;
+}
+
+.expandedSection {
+  margin-bottom: 16px;
+  background-color: #f5f5f5;
+}
+
+.card {
+  position: relative;
+  padding: 16px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.card-image-container {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+  object-position: top center; 
+}
+
+.card-image:hover {
+  transform: scale(1.1);
+}
+
+.card-content {
+  margin-bottom: 16px;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.card-description {
+  margin-bottom: 4px;
+}
+
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-success {
+  background-color: #52c41a;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #389e0d;
+}
+
+.btn-danger {
+  background-color: #f5222d;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #cf1322;
+}
+.admin-profile-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+}
+
+.admin-profile-card-header {
+  background-color: #f5f5f5;
+  padding: 16px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.admin-profile-card-title {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0;
+}
+
+.admin-profile-card-body {
+  padding: 16px;
+}
+
+.admin-profile-field {
+  margin-bottom: 8px;
+}
+
+.admin-profile-field-label {
+  font-weight: bold;
+  display: inline-block;
+  width: 120px;
+}
+
+.admin-profile-field-value {
+  display: inline-block;
+}
+.staff-cards-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.staff-card {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  width: calc(33.33% - 12px);
+}
+
+.staff-card-icon {
+  background-color: #f5f5f5;
+  border-radius: 50%;
+  padding: 12px;
+  margin-right: 16px;
+}
+
+.staff-card-content {
+  flex-grow: 1;
+}
+
+.staff-card-title {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0;
+}
+
+.staff-card-count {
+  margin: 8px 0 0;
+}
+.logos {
+  margin: 10px;
+}
+
+.logo-image {
+  width: 105%;
+}

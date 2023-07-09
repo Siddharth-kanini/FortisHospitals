@@ -18,7 +18,7 @@ namespace AdminApplication.Controllers
             _context = context;
         }
 
-        [HttpGet("doctors")]
+        [HttpGet("Admindoc")]
         public async Task<IEnumerable<Doctor>> GetAllDoctorsAsync()
         {
             return await _context.Doctors.ToListAsync();
